@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Hezky Health Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-navy: #081B3A;
+      --color-gold: #C7A15A;
+      --color-gold-dark: #a8873e;
+      --color-gray: #6B7280;
+      --color-light-gray: #E5E7EB;
+      --color-off-white: #F8F6F2;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f1ed;
+      color: #1F2937;
+    }
+
+    .admin-wrap {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--color-navy);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 28px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: white;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-brand .gold {
+      color: var(--color-gold);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 4px;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+    }
+
+    .sidebar-nav a i {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .sidebar-nav .badge {
+      margin-left: auto;
+      background: var(--color-gold);
+      color: white;
+      font-size: 11px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .sidebar-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-footer button {
+      width: 100%;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .sidebar-footer button:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 260px;
+      flex: 1;
+      padding: 28px 36px 60px;
+    }
+
+    .top-bar-admin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .top-bar-admin h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--color-navy);
+    }
+
+    .top-bar-admin .sub {
+      font-size: 14px;
+      color: var(--color-gray);
+      font-weight: 400;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 6px 14px 6px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--color-light-gray);
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--color-gold);
+    }
+
+    .search-box input {
+      border: none;
+      padding: 8px 0;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: transparent;
+      min-width: 180px;
+    }
+
+    .search-box input:focus {
+      outline: none;
+    }
+
+    .search-box i {
+      color: var(--color-gray);
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid var(--color-light-gray);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold-dark);
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-gold:hover {
+      background: var(--color-gold-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px 24px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+
+    .stat-card .label {
+      font-size: 13px;
+      color: var(--color-gray);
+      margin-top: 2px;
+    }
+
+    .stat-card .label i {
+      color: var(--color-gold);
+      margin-right: 4px;
+    }
+
+    /* Filters */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      padding: 6px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--color-light-gray);
+      background: white;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn.active {
+      background: var(--color-navy);
+      color: white;
+      border-color: var(--color-navy);
+    }
+
+    .filter-btn:hover:not(.active) {
+      border-color: var(--color-gold);
+    }
+
+    /* Submissions table */
+    .submissions-list {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .submission-item {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1fr 1.2fr 0.8fr 0.6fr;
+      gap: 12px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--color-light-gray);
+      align-items: center;
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+
+    .submission-item:hover {
+      background: rgba(199, 161, 90, 0.04);
+    }
+
+    .submission-item:last-child {
+      border-bottom: none;
+    }
+
+    .submission-item .name {
+      font-weight: 600;
+      color: var(--color-navy);
+    }
+
+    .submission-item .org {
+      font-size: 13px;
+      color: var(--color-gray);
+    }
+
+    .submission-item .email {
+      font-size: 13px;
+      color: var(--color-gray);
+      word-break: break-all;
+    }
+
+    .submission-item .service-tag {
+      font-size: 12px;
+      background: rgba(199, 161, 90, 0.1);
+      color: var(--color-gold-dark);
+      padding: 3px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .submission-item .date {
+      font-size: 13px;
+      color: var(--color-gray);
+    }
+
+    .status-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .status-badge.new {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .status-badge.contacted {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .status-badge.in-progress {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .status-badge.closed {
+      background: var(--color-light-gray);
+      color: var(--color-gray);
+    }
+
+    .empty-state {
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--color-gray);
+    }
+
+    .empty-state i {
+      font-size: 48px;
+      color: var(--color-light-gray);
+      margin-bottom: 16px;
+    }
+
+    /* Loading */
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--color-light-gray);
+      border-top: 3px solid var(--color-gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .submission-item {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 16px;
+      }
+      .submission-item .date,
+      .submission-item .service-tag {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+        padding: 20px 14px;
+      }
+      .main-content {
+        margin-left: 200px;
+        padding: 20px 16px;
+      }
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .submission-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 18px;
+      }
+      .top-actions {
+        width: 100%;
+      }
+      .search-box {
+        flex: 1;
+      }
+      .search-box input {
+        min-width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 16px 12px;
+      }
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .stat-card {
+        padding: 14px 16px;
+      }
+      .stat-card .number {
+        font-size: 24px;
+      }
+      .top-bar-admin h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">Hezky <span class="gold">Health</span></div>
+      <ul class="sidebar-nav">
+        <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard <span class="badge" id="newCount">0</span></a></li>
+        <li><a href="#" id="allLink"><i class="fas fa-envelope"></i> All Submissions</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <div class="top-bar-admin">
+        <div>
+          <h1>Dashboard <span class="sub">Manage your inquiries</span></h1>
+        </div>
+        <div class="top-actions">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by name, email, or clinic..." />
+          </div>
+          <button class="btn-outline" id="exportBtn"><i class="fas fa-download"></i> Export CSV</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card"><div class="number" id="totalCount">0</div><div class="label"><i class="fas fa-envelope"></i> Total</div></div>
+        <div class="stat-card"><div class="number" id="newCount2">0</div><div class="label"><i class="fas fa-clock"></i> New</div></div>
+        <div class="stat-card"><div class="number" id="contactedCount">0</div><div class="label"><i class="fas fa-phone"></i> Contacted</div></div>
+        <div class="stat-card"><div class="number" id="closedCount">0</div><div class="label"><i class="fas fa-check-circle"></i> Closed</div></div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="New">New</button>
+        <button class="filter-btn" data-filter="Contacted">Contacted</button>
+        <button class="filter-btn" data-filter="In Progress">In Progress</button>
+        <button class="filter-btn" data-filter="Closed">Closed</button>
+      </div>
+
+      <!-- Submissions -->
+      <div class="submissions-list" id="submissionsList">
+        <div class="loading-spinner"><div class="spinner"></div></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://zczvzcfhbxufcfjqtlfi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjenZ6Y2ZoYnh1ZmNmanF0bGZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODExMjYsImV4cCI6MjA5ODU1NzEyNn0.HCBv-sCkJvn6fd4N6rDjm3OODJwdduGT_HeB2Z9wtMs';
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+    let submissions = [];
+    let refreshTimer = null;
+
+    // Check session
+    const session = JSON.parse(localStorage.getItem('supabase_session') || 'null');
+    if (!session) {
+      window.location.href = 'login.html';
+    }
+
+    const accessToken = session.access_token;
+
+    async function sendHeartbeat() {
+      const lastHeartbeat = Number(localStorage.getItem('supabase_keepalive_at') || '0');
+      const now = Date.now();
+
+      if (lastHeartbeat && now - lastHeartbeat < 5 * 24 * 60 * 60 * 1000) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify({
+            full_name: 'System Heartbeat',
+            organization: 'Automated Keepalive',
+            email: 'heartbeat@hezkyhealth.com',
+            phone: '',
+            country: 'System',
+            service: 'Keepalive',
+            timeline: 'Auto',
+            message: 'Periodic Supabase keepalive to prevent pause',
+            status: 'Heartbeat'
+          })
+        });
+
+        if (response.ok) {
+          localStorage.setItem('supabase_keepalive_at', String(now));
+        }
+      } catch (error) {
+        console.warn('Heartbeat failed', error);
+      }
+    }
+
+    // Fetch submissions
+    async function fetchSubmissions() {
+      const url = new URL(`${SUPABASE_URL}/rest/v1/contact_submissions`);
+      url.searchParams.set('select', '*');
+      url.searchParams.set('order', 'created_at.desc');
+
+      const response = await fetch(url, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+
+      if (response.status === 401) {
+        localStorage.removeItem('supabase_session');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const data = await response.json();
+      submissions = data;
+      render();
+    }
+
+    function startAutoRefresh() {
+      if (refreshTimer) {
+        clearInterval(refreshTimer);
+      }
+
+      refreshTimer = setInterval(() => {
+        fetchSubmissions();
+        const lastHeartbeat = Number(localStorage.getItem('supabase_keepalive_at') || '0');
+        const now = Date.now();
+
+        if (!lastHeartbeat || now - lastHeartbeat >= 5 * 24 * 60 * 60 * 1000) {
+          sendHeartbeat();
+        }
+      }, 10000);
+    }
+
+    function render() {
+      const visibleSubmissions = submissions.filter(s => s.status !== 'Heartbeat' && s.full_name !== 'System Heartbeat');
+      let filtered = visibleSubmissions;
+
+      // Filter
+      if (currentFilter !== 'all') {
+        filtered = filtered.filter(s => s.status === currentFilter);
+      }
+
+      // Search
+      if (currentSearch.trim()) {
+        const q = currentSearch.toLowerCase().trim();
+        filtered = filtered.filter(s =>
+          s.full_name?.toLowerCase().includes(q) ||
+          s.email?.toLowerCase().includes(q) ||
+          s.organization?.toLowerCase().includes(q) ||
+          s.country?.toLowerCase().includes(q)
+        );
+      }
+
+      // Stats
+      const total = visibleSubmissions.length;
+      const newCount = visibleSubmissions.filter(s => s.status === 'New').length;
+      const contactedCount = visibleSubmissions.filter(s => s.status === 'Contacted' || s.status === 'In Progress').length;
+      const closedCount = visibleSubmissions.filter(s => s.status === 'Closed').length;
+
+      document.getElementById('totalCount').textContent = total;
+      document.getElementById('newCount2').textContent = newCount;
+      document.getElementById('contactedCount').textContent = contactedCount;
+      document.getElementById('closedCount').textContent = closedCount;
+      document.getElementById('newCount').textContent = newCount;
+
+      // List
+      const list = document.getElementById('submissionsList');
+
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>No submissions found</h3>
+            <p style="color: var(--color-gray);">${currentFilter !== 'all' ? 'Try changing the filter.' : 'New inquiries will appear here.'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = filtered.map(s => {
+        const statusClass = s.status?.toLowerCase().replace(' ', '-') || 'new';
+        const date = new Date(s.created_at);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+        return `
+          <div class="submission-item" data-id="${s.id}" onclick="viewSubmission('${s.id}')">
+            <div>
+              <div class="name">${s.full_name || 'Unknown'}</div>
+              <div class="org">${s.organization || 'No clinic'}</div>
+            </div>
+            <div class="email">${s.email || 'No email'}</div>
+            <div><span class="service-tag">${s.service || 'General'}</span></div>
+            <div class="date">${dateStr} · ${timeStr}</div>
+            <div><span class="status-badge ${statusClass}">${s.status || 'New'}</span></div>
+            <div><i class="fas fa-chevron-right" style="color: var(--color-light-gray);"></i></div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function viewSubmission(id) {
+      window.location.href = `submission.html?id=${id}`;
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      render();
+    });
+
+    // Export CSV
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      if (submissions.length === 0) return;
+      const headers = ['Name', 'Email', 'Organization', 'Country', 'Service', 'Timeline', 'Status', 'Created At'];
+      const rows = submissions.map(s => [
+        s.full_name || '',
+        s.email || '',
+        s.organization || '',
+        s.country || '',
+        s.service || '',
+        s.timeline || '',
+        s.status || '',
+        new Date(s.created_at).toLocaleString()
+      ]);
+
+      let csv = headers.join(',') + '\n' + rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `submissions_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      if (refreshTimer) {
+        clearInterval(refreshTimer);
+      }
+      localStorage.removeItem('supabase_session');
+      window.location.href = 'login.html';
+    });
+
+    // Init
+    fetchSubmissions();
+    sendHeartbeat();
+    startAutoRefresh();
+  </script>
+</body>
+</html>

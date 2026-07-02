@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submission Detail | Hezky Health Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-navy: #081B3A;
+      --color-gold: #C7A15A;
+      --color-gold-dark: #a8873e;
+      --color-gray: #6B7280;
+      --color-light-gray: #E5E7EB;
+      --color-off-white: #F8F6F2;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f1ed;
+      color: #1F2937;
+      min-height: 100vh;
+    }
+
+    .admin-wrap {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--color-navy);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 28px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: white;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-brand .gold {
+      color: var(--color-gold);
+    }
+
+    .sidebar-nav {
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 4px;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+    }
+
+    .sidebar-nav a i {
+      width: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .sidebar-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-footer button {
+      width: 100%;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .sidebar-footer button:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    /* Main */
+    .main-content {
+      margin-left: 260px;
+      flex: 1;
+      padding: 28px 36px 60px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-gray);
+      text-decoration: none;
+      margin-bottom: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--color-navy);
+    }
+
+    .detail-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px 36px;
+      max-width: 900px;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-light-gray);
+    }
+
+    .detail-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--color-navy);
+    }
+
+    .detail-header .sub {
+      font-size: 14px;
+      color: var(--color-gray);
+    }
+
+    .status-select {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-select select {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--color-light-gray);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      cursor: pointer;
+    }
+
+    .status-select select:focus {
+      outline: none;
+      border-color: var(--color-gold);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+    }
+
+    .detail-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .detail-field label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-gray);
+    }
+
+    .detail-field .value {
+      font-size: 16px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-light-gray);
+    }
+
+    .detail-field .value.message-value {
+      border-bottom: none;
+      background: var(--color-off-white);
+      padding: 14px 16px;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .detail-actions {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-light-gray);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-save {
+      background: var(--color-gold);
+      color: white;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-save:hover {
+      background: var(--color-gold-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-delete {
+      background: #fee2e2;
+      color: #991b1b;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-delete:hover {
+      background: #fecaca;
+    }
+
+    .btn-back {
+      background: var(--color-light-gray);
+      color: var(--color-gray);
+      border: none;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      background: #d1d5db;
+    }
+
+    .loading-spinner {
+      display: flex;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--color-light-gray);
+      border-top: 3px solid var(--color-gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--color-navy);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 14px;
+      box-shadow: 0 8px 30px rgba(8, 27, 58, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.success {
+      background: #065f46;
+    }
+
+    .toast.error {
+      background: #991b1b;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+        padding: 20px 14px;
+      }
+      .main-content {
+        margin-left: 200px;
+        padding: 20px 16px;
+      }
+      .detail-card {
+        padding: 20px;
+      }
+      .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .detail-header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        display: none;
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 16px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-wrap">
+    <aside class="sidebar">
+      <div class="sidebar-brand">Hezky <span class="gold">Health</span></div>
+      <ul class="sidebar-nav">
+        <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="dashboard.html"><i class="fas fa-envelope"></i> Submissions</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <a href="dashboard.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+
+      <div class="detail-card" id="detailCard">
+        <div class="loading-spinner"><div class="spinner"></div></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const SUPABASE_URL = 'https://zczvzcfhbxufcfjqtlfi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjenZ6Y2ZoYnh1ZmNmanF0bGZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODExMjYsImV4cCI6MjA5ODU1NzEyNn0.HCBv-sCkJvn6fd4N6rDjm3OODJwdduGT_HeB2Z9wtMs';
+
+    const session = JSON.parse(localStorage.getItem('supabase_session') || 'null');
+    if (!session) {
+      window.location.href = 'login.html';
+    }
+
+    const accessToken = session.access_token;
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    if (!id) {
+      window.location.href = 'dashboard.html';
+    }
+
+    let currentData = null;
+
+    async function fetchSubmission() {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions?id=eq.${id}`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+
+      if (response.status === 401) {
+        localStorage.removeItem('supabase_session');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const data = await response.json();
+      if (data.length === 0) {
+        window.location.href = 'dashboard.html';
+        return;
+      }
+
+      currentData = data[0];
+      render(currentData);
+    }
+
+    function render(data) {
+      const card = document.getElementById('detailCard');
+      const date = new Date(data.created_at);
+      const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+      const statusOptions = ['New', 'Contacted', 'In Progress', 'Closed'];
+
+      card.innerHTML = `
+        <div class="detail-header">
+          <div>
+            <h2>${data.full_name || 'Unknown'}</h2>
+            <div class="sub">Submitted ${dateStr} at ${timeStr}</div>
+          </div>
+          <div class="status-select">
+            <label for="statusSelect" style="font-size:13px;font-weight:500;">Status:</label>
+            <select id="statusSelect">
+              ${statusOptions.map(s => `<option value="${s}" ${s === data.status ? 'selected' : ''}>${s}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-field">
+            <label>Full Name</label>
+            <div class="value">${data.full_name || '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Email</label>
+            <div class="value">${data.email ? `<a href="mailto:${data.email}" style="color: var(--color-gold-dark);">${data.email}</a>` : '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Organization / Clinic</label>
+            <div class="value">${data.organization || '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Phone</label>
+            <div class="value">${data.phone ? `<a href="tel:${data.phone}" style="color: var(--color-gold-dark);">${data.phone}</a>` : '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Country</label>
+            <div class="value">${data.country || '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Service Required</label>
+            <div class="value">${data.service || '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Timeline</label>
+            <div class="value">${data.timeline || '—'}</div>
+          </div>
+          <div class="detail-field">
+            <label>Status</label>
+            <div class="value"><span class="status-badge ${(data.status || 'new').toLowerCase().replace(' ', '-')}">${data.status || 'New'}</span></div>
+          </div>
+          <div class="detail-field full">
+            <label>Message / Project Details</label>
+            <div class="value message-value">${data.message || 'No message provided.'}</div>
+          </div>
+          <div class="detail-field full">
+            <label>Internal Notes</label>
+            <textarea id="notesInput" style="width:100%;padding:12px 16px;border:1.5px solid var(--color-light-gray);border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;min-height:80px;resize:vertical;">${data.notes || ''}</textarea>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <button class="btn-save" id="saveBtn"><i class="fas fa-save"></i> Save Changes</button>
+          <button class="btn-delete" id="deleteBtn"><i class="fas fa-trash"></i> Delete</button>
+          <a href="dashboard.html" class="btn-back">Cancel</a>
+        </div>
+      `;
+
+      // Status badge styles
+      const style = document.createElement('style');
+      style.textContent = `
+        .status-badge {
+          font-size: 12px;
+          font-weight: 600;
+          padding: 4px 14px;
+          border-radius: 50px;
+          display: inline-block;
+        }
+        .status-badge.new { background: #dbeafe; color: #1e40af; }
+        .status-badge.contacted { background: #fef3c7; color: #92400e; }
+        .status-badge.in-progress { background: #d1fae5; color: #065f46; }
+        .status-badge.closed { background: var(--color-light-gray); color: var(--color-gray); }
+      `;
+      document.head.appendChild(style);
+
+      // Save
+      document.getElementById('saveBtn').addEventListener('click', saveChanges);
+      document.getElementById('deleteBtn').addEventListener('click', deleteSubmission);
+    }
+
+    async function saveChanges() {
+      const status = document.getElementById('statusSelect').value;
+      const notes = document.getElementById('notesInput').value;
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions?id=eq.${id}`, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ status, notes })
+        });
+
+        if (!response.ok) throw new Error('Failed to update');
+
+        showToast('Changes saved successfully!', 'success');
+      } catch (error) {
+        showToast('Error saving changes.', 'error');
+      }
+    }
+
+    async function deleteSubmission() {
+      if (!confirm('Delete this submission permanently?')) return;
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions?id=eq.${id}`, {
+          method: 'DELETE',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${accessToken}`,
+            'Prefer': 'return=minimal'
+          }
+        });
+
+        if (!response.ok) throw new Error('Failed to delete');
+
+        showToast('Submission deleted.', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 800);
+      } catch (error) {
+        showToast('Error deleting submission.', 'error');
+      }
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type} visible`;
+      clearTimeout(toast._timeout);
+      toast._timeout = setTimeout(() => toast.classList.remove('visible'), 3000);
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('supabase_session');
+      window.location.href = 'login.html';
+    });
+
+    fetchSubmission();
+  </script>
+</body>
+</html>

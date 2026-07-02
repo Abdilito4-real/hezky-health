@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Hezky Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-navy: #081B3A;
+      --color-gold: #C7A15A;
+      --color-gold-dark: #a8873e;
+      --color-gray: #6B7280;
+      --color-light-gray: #E5E7EB;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f1ed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(8, 27, 58, 0.12);
+    }
+
+    .login-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .login-logo h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--color-navy);
+    }
+
+    .login-logo p {
+      color: var(--color-gray);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .login-logo .brand {
+      color: var(--color-gold);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--color-light-gray);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      background: #fafaf9;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 4px rgba(199, 161, 90, 0.12);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--color-navy);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      margin-top: 6px;
+    }
+
+    .login-btn:hover {
+      background: #0a254a;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(8, 27, 58, 0.2);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .error-msg {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    .login-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--color-gray);
+    }
+
+    .login-footer a {
+      color: var(--color-gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-logo">
+      <h1>Hezky <span class="brand">Health</span></h1>
+      <p>Admin Dashboard</p>
+    </div>
+
+    <div class="error-msg" id="errorMsg">
+      <i class="fas fa-exclamation-circle"></i> Invalid email or password.
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="admin@hezkyhealth.com" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="login-btn" id="loginBtn">Sign In <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+    </form>
+
+    <div class="login-footer">
+      <a href="../index.html"><i class="fas fa-arrow-left"></i> Back to website</a>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://zczvzcfhbxufcfjqtlfi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjenZ6Y2ZoYnh1ZmNmanF0bGZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODExMjYsImV4cCI6MjA5ODU1NzEyNn0.HCBv-sCkJvn6fd4N6rDjm3OODJwdduGT_HeB2Z9wtMs';
+
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const loginBtn = document.getElementById('loginBtn');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      errorMsg.classList.remove('visible');
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = 'Signing in...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error_description || 'Invalid credentials');
+        }
+
+        // Store session
+        localStorage.setItem('supabase_session', JSON.stringify({
+          access_token: data.access_token,
+          refresh_token: data.refresh_token,
+          user: data.user
+        }));
+
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+
+      } catch (error) {
+        errorMsg.textContent = error.message || 'Invalid email or password.';
+        errorMsg.classList.add('visible');
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = 'Sign In <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>';
+      }
+    });
+  </script>
+</body>
+</html>
