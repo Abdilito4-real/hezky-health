@@ -1,0 +1,22 @@
+# Robots.txt for Hezky Health Website
+# Allow all search engines to crawl
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+
+# Bing-specific
+User-agent: Bingbot
+Allow: /
+
+# Performance settings
+Crawl-delay: 1
+Request-rate: 30/1m
+
+# Sitemap location
+Sitemap: https://www.hezkyhealth.com/sitemap.xml

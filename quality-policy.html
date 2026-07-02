@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quality Policy | Hezky Health – IVF Laboratory Solutions</title>
+  <meta name="description" content="Hezky Medical and Reproductive Health Quality Policy – ISO 9001:2015 compliant commitment to excellence in IVF laboratory solutions." />
+  <link rel="canonical" href="https://www.hezkyhealth.com/quality-policy.html" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & BASE (matching index.html) ===== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-navy: #081B3A;
+      --color-light: #0b2a5c;
+      --color-gold: #C7A15A;
+      --color-gold-light: #e8d5a3;
+      --color-gold-dark: #a8873e;
+      --color-white: #FFFFFF;
+      --color-off-white: #F8F6F2;
+      --color-gray: #6B7280;
+      --color-light-gray: #E5E7EB;
+      --color-charcoal: #1F2937;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-charcoal);
+      background: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      background: var(--color-navy);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 1001;
+    }
+    .top-bar__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+    .top-bar__left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .top-bar__link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.75);
+      transition: color var(--transition);
+      font-size: 13px;
+    }
+    .top-bar__link:hover {
+      color: var(--color-gold);
+    }
+    .top-bar__right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-bar__follow {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.5px;
+    }
+    .top-bar__social {
+      color: rgba(255, 255, 255, 0.6);
+      transition: color var(--transition), transform var(--transition);
+      font-size: 14px;
+    }
+    .top-bar__social:hover {
+      color: var(--color-gold);
+      transform: translateY(-1px);
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: var(--color-white);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: box-shadow var(--transition), padding var(--transition);
+    }
+    .header.scrolled {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 12px 0;
+    }
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .header__logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .header__logo img {
+      height: 50px;
+      width: auto;
+    }
+    .nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .nav__list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav__link {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-charcoal);
+      border-radius: 6px;
+      transition: all var(--transition);
+      position: relative;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .nav__link:hover,
+    .nav__link--active {
+      color: var(--color-gold);
+      background: rgba(199, 161, 90, 0.08);
+    }
+    .nav__link--active::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--color-gold);
+      border-radius: 2px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-sans);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .btn--gold {
+      background: var(--color-gold);
+      color: var(--color-white);
+    }
+    .btn--gold:hover {
+      background: var(--color-gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(199, 161, 90, 0.3);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger__bar {
+      width: 28px;
+      height: 2.5px;
+      background: var(--color-navy);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .hamburger.active .hamburger__bar:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active .hamburger__bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .hamburger__bar:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ===== PAGE HERO (quality policy) ===== */
+    .page-hero {
+      padding: 60px 0 40px;
+      background: var(--color-navy);
+      color: white;
+      text-align: center;
+    }
+    .page-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .page-hero__sub {
+      font-size: 18px;
+      color: var(--color-gold-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .page-hero__meta {
+      margin-top: 16px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .page-hero__meta span i {
+      margin-right: 6px;
+      color: var(--color-gold);
+    }
+
+    /* ===== QUALITY POLICY CONTENT ===== */
+    .policy-content {
+      padding: 60px 0 80px;
+      background: var(--color-off-white);
+    }
+    .policy-content__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 48px 56px;
+    }
+    .policy-content__document {
+      font-size: 14px;
+      color: var(--color-gray);
+      border-bottom: 1px solid var(--color-light-gray);
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .policy-content__document span {
+      display: inline-block;
+    }
+    .policy-content__heading {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 20px;
+      border-left: 4px solid var(--color-gold);
+      padding-left: 16px;
+    }
+    .policy-content__body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-charcoal);
+    }
+    .policy-content__body p {
+      margin-bottom: 20px;
+    }
+    .policy-content__body ul {
+      margin: 16px 0 24px 24px;
+      list-style: disc;
+    }
+    .policy-content__body ul li {
+      margin-bottom: 10px;
+      padding-left: 8px;
+    }
+    .policy-content__body strong {
+      color: var(--color-navy);
+    }
+    .policy-signature {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px solid var(--color-light-gray);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .policy-signature__left {
+      font-size: 15px;
+      color: var(--color-gray);
+    }
+    .policy-signature__left strong {
+      color: var(--color-navy);
+      font-weight: 600;
+    }
+    .policy-signature__right {
+      text-align: right;
+    }
+    .policy-signature__right .name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+    .policy-signature__right .title {
+      font-size: 14px;
+      color: var(--color-gray);
+    }
+
+    /* ===== BACK LINK ===== */
+    .back-link-wrap {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-gold);
+      font-weight: 600;
+      transition: all var(--transition);
+    }
+    .back-link:hover {
+      color: var(--color-gold-dark);
+      transform: translateX(-4px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--color-navy);
+      color: rgba(255, 255, 255, 0.8);
+      padding-top: 60px;
+    }
+    .footer__main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .footer__logo img {
+      height: 44px;
+      width: auto;
+    }
+    .footer__tagline {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 300px;
+      margin: 12px 0 20px;
+    }
+    .footer__socials {
+      display: flex;
+      gap: 12px;
+    }
+    .footer__social {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all var(--transition);
+      font-size: 16px;
+    }
+    .footer__social:hover {
+      border-color: var(--color-gold);
+      background: rgba(199, 161, 90, 0.1);
+      color: var(--color-gold);
+    }
+    .footer__heading {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer__link {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color var(--transition);
+    }
+    .footer__link:hover {
+      color: var(--color-gold);
+    }
+    .footer__links--contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer__newsletter {
+      margin-top: 20px;
+    }
+    .footer__newsletter-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 4px;
+    }
+    .footer__newsletter-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 12px;
+    }
+    .footer__newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+    .footer__newsletter-input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 13px;
+      outline: none;
+      transition: border var(--transition);
+      font-family: var(--font-sans);
+    }
+    .footer__newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    .footer__newsletter-input:focus {
+      border-color: var(--color-gold);
+    }
+    .footer__newsletter-btn {
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: none;
+      background: var(--color-gold);
+      color: white;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: var(--font-sans);
+      white-space: nowrap;
+    }
+    .footer__newsletter-btn:hover {
+      background: var(--color-gold-dark);
+    }
+    .footer__bottom {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .footer__bottom-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer__copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .footer__bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer__bottom-link {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color var(--transition);
+    }
+    .footer__bottom-link:hover {
+      color: var(--color-gold);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .footer__main {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+    @media (max-width: 768px) {
+      .top-bar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .top-bar__left {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .top-bar__right {
+        gap: 8px;
+      }
+      .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--color-light-gray);
+      }
+      .nav.open {
+        display: block;
+      }
+      .nav__list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+      }
+      .nav__link {
+        padding: 12px 16px;
+        width: 100%;
+        white-space: normal;
+      }
+      .nav__link--active::after {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .btn--gold {
+        display: none;
+      }
+      .footer__main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .footer__bottom-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .policy-content__inner {
+        padding: 28px 20px;
+      }
+      .policy-signature {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .policy-signature__right {
+        text-align: left;
+      }
+      .page-hero__meta {
+        gap: 14px;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .footer__newsletter-form {
+        flex-direction: column;
+      }
+      .footer__newsletter-btn {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar" role="banner">
+    <div class="top-bar__inner container">
+      <div class="top-bar__left">
+        <a href="tel:+2348149917807" class="top-bar__link" aria-label="Phone number">
+          <i class="fas fa-phone-alt"></i> +234 814 991 7807
+        </a>
+        <a href="mailto:info@hezkyhealth.com" class="top-bar__link" aria-label="Email address">
+          <i class="fas fa-envelope"></i> info@hezkyhealth.com
+        </a>
+      </div>
+      <div class="top-bar__right">
+        <span class="top-bar__follow">Follow us:</span>
+        <a href="https://t.me/hezkyhealth" class="top-bar__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/hezkyhealth" class="top-bar__social" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61571051997062" class="top-bar__social" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://t.me/hezky" class="top-bar__social" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header" role="navigation">
+    <div class="header__inner container">
+      <a href="index.html" class="header__logo" aria-label="Hezky Health Home">
+        <img src="header.jpg" alt="Hezky Health Logo" />
+      </a>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav__list" role="list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="index.html#about" class="nav__link">About Us</a></li>
+          <li><a href="index.html#solutions" class="nav__link">Services</a></li>
+          <li><a href="index.html#products" class="nav__link">Products</a></li>
+          <li><a href="index.html#projects" class="nav__link">Projects</a></li>
+          <li><a href="index.html#training" class="nav__link">Training</a></li>
+          <li><a href="index.html#resources" class="nav__link">Resources</a></li>
+          <li><a href="index.html#footer" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#footer" class="btn btn--gold" aria-label="Get in touch">GET IN TOUCH</a>
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero" aria-label="Quality Policy Header">
+      <div class="container">
+        <h1 class="page-hero__title">Quality Policy</h1>
+        <p class="page-hero__sub">Hezky Medical and Reproductive Health Limited – ISO 9001:2015 Compliant</p>
+        <div class="page-hero__meta">
+          <span><i class="fas fa-file-alt"></i> Document: QP-001</span>
+          <span><i class="fas fa-calendar-alt"></i> Issue Date: January 2025</span>
+          <span><i class="fas fa-code-branch"></i> Version: 1.0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUALITY POLICY CONTENT ===== -->
+    <section class="policy-content" aria-label="Quality Policy Full Statement">
+      <div class="container">
+        <div class="policy-content__inner">
+
+          <div class="policy-content__document">
+            <span><strong>Document Number:</strong> QP-001</span>
+            <span><strong>Version:</strong> 1.0</span>
+            <span><strong>Issue Date:</strong> 15th January 2025</span>
+            <span><strong>Review Date:</strong> January 2026</span>
+          </div>
+
+          <h2 class="policy-content__heading">QUALITY POLICY STATEMENT</h2>
+
+          <div class="policy-content__body">
+
+            <p><strong>Hezky Medical and Reproductive Health Limited (HMRH)</strong> is committed to advancing medically assisted reproductive medicine and laboratory services through in vitro fertilisation (IVF) technologies, equipment supplies, and specialised consulting. We help clinics by setting up labs, providing supplies, and offering technical support, which allows them to provide safe, accurate, and high-quality care for patients while enhancing their ability to offer modern andrology and fertility services.</p>
+
+            <p>Our quality management system (QMS) is designed to meet all requirements stipulated in <strong>ISO 9001:2015</strong>, including compliance with all applicable ethical, statutory, and regulatory requirements. Our commitment lies in continuously improving our QMS to ensure the satisfaction of patients, healthcare providers, partners, and other stakeholders.</p>
+
+            <p>This quality policy provides the framework for setting and reviewing quality objectives and drives our pursuit of continuous improvement. It is communicated to all staff and partners, embedded in our daily operations, and periodically reviewed to ensure its suitability, adequacy, and effectiveness.</p>
+
+            <p>Our core commitments are:</p>
+            <ul>
+              <li><strong>Advancing medically assisted reproductive medicine</strong> – delivering innovative and reliable IVF laboratory solutions.</li>
+              <li><strong>Operating an ISO 9001:2015 compliant Quality Management System</strong> – ensuring consistency, traceability, and excellence.</li>
+              <li><strong>Meeting ethical, statutory and regulatory requirements</strong> – upholding the highest standards of integrity and compliance.</li>
+              <li><strong>Continual improvement</strong> – proactively enhancing our processes, products, and services.</li>
+              <li><strong>Customer and stakeholder satisfaction</strong> – building lasting partnerships through trust and performance.</li>
+              <li><strong>Periodic review of the Quality Management System</strong> – ensuring ongoing relevance and effectiveness.</li>
+            </ul>
+
+            <p>This policy is the cornerstone of our operations and is available to all interested parties upon request.</p>
+
+          </div>
+
+          <!-- Signature block -->
+          <div class="policy-signature">
+            <div class="policy-signature__left">
+              <p><strong>Approved by:</strong><br />Hezky Medical and Reproductive Health Limited</p>
+              <p style="margin-top: 8px; font-size: 14px;"><i class="fas fa-check-circle" style="color: var(--color-gold);"></i> ISO 9001:2015 compliant</p>
+            </div>
+            <div class="policy-signature__right">
+              <div class="name">Dr. Adebayo Hezky</div>
+              <div class="title">Managing Director</div>
+              <div style="font-size: 13px; color: var(--color-gray); margin-top: 4px;"><i class="far fa-calendar-alt"></i> Signed: 15th January 2025</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Back link -->
+        <div class="back-link-wrap">
+          <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" aria-label="Site footer">
+    <div class="footer__main container">
+      <div class="footer__col footer__col--brand">
+        <a href="index.html" class="footer__logo" aria-label="Hezky Health Home">
+          <img src="header.jpg" alt="Hezky Health" />
+        </a>
+        <p class="footer__tagline">Luxury IVF Laboratory Solutions for clinics and healthcare professionals worldwide.</p>
+        <div class="footer__socials" aria-label="Social media links">
+          <a href="https://t.me/hezkyhealth" class="footer__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://t.me/hezkyhealth" class="footer__social" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://t.me/hezkyhealth" class="footer__social" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+          <a href="https://t.me/hezky" class="footer__social" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Company</h3>
+        <ul class="footer__links" role="list">
+          <li><a href="index.html#about" class="footer__link">About Us</a></li>
+          <li><a href="quality-policy.html" class="footer__link">Quality Policy</a></li>
+          <li><a href="index.html#projects" class="footer__link">Projects</a></li>
+          <li><a href="index.html#gallery" class="footer__link">Gallery</a></li>
+          <li><a href="index.html#footer" class="footer__link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Services</h3>
+        <ul class="footer__links" role="list">
+          <li><a href="index.html#solution-lab-design" class="footer__link">IVF Laboratory Design</a></li>
+          <li><a href="index.html#solution-andrology" class="footer__link">Andrology Solutions</a></li>
+          <li><a href="index.html#solution-equipment" class="footer__link">Equipment Supply</a></li>
+          <li><a href="index.html#solution-consultancy" class="footer__link">Laboratory Consultancy</a></li>
+          <li><a href="quality-policy.html" class="footer__link">Quality Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Contact</h3>
+        <ul class="footer__links footer__links--contact" role="list">
+          <li><i class="fas fa-phone-alt"></i> <a href="tel:+2348149917807" class="footer__link">+234 814 991 7807</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:info@hezkyhealth.com" class="footer__link">info@hezkyhealth.com</a></li>
+        </ul>
+        <div class="footer__newsletter">
+          <h4 class="footer__newsletter-title">Newsletter</h4>
+          <p class="footer__newsletter-text">Stay updated with the latest in IVF laboratory innovations.</p>
+          <div class="footer__newsletter-form" role="form" aria-label="Newsletter signup">
+            <input type="email" class="footer__newsletter-input" placeholder="Your email address" aria-label="Email address for newsletter" />
+            <button class="footer__newsletter-btn" aria-label="Subscribe to newsletter">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copy">&copy; 2025 HEZKY MEDICAL AND REPRODUCTIVE HEALTH. All rights reserved. Luxury IVF Laboratory Solutions.</p>
+        <div class="footer__bottom-links">
+          <a href="quality-policy.html" class="footer__bottom-link">Quality Policy</a>
+          <a href="#" class="footer__bottom-link">Privacy Policy</a>
+          <a href="#" class="footer__bottom-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile hamburger
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    if (hamburger && nav) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Header scroll shadow
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Newsletter
+    const newsletterBtn = document.querySelector('.footer__newsletter-btn');
+    if (newsletterBtn) {
+      newsletterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const input = document.querySelector('.footer__newsletter-input');
+        if (input && input.value.trim()) {
+          alert(`Thank you for subscribing with: ${input.value.trim()}`);
+          input.value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "name": "HEZKY MEDICAL AND REPRODUCTIVE HEALTH",
+  "short_name": "Hezky Health",
+  "description": "Premium IVF laboratory solutions, andrology diagnostics, and medical equipment supply for fertility clinics worldwide.",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#081B3A",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo-white.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["medical", "healthcare", "fertility"],
+  "screenshots": [
+    {
+      "src": "hero.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Solutions",
+      "short_name": "Solutions",
+      "description": "View our IVF laboratory solutions",
+      "url": "/#solutions",
+      "icons": []
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch with us",
+      "url": "/#contact-map",
+      "icons": []
+    }
+  ]
+}
