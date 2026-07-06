@@ -488,6 +488,131 @@
       margin-top: 8px;
     }
 
+    .hero__read-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 8px;
+      width: fit-content;
+    }
+
+    .hero__read-more:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .solution-card__toggle {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .solution-card__details {
+      margin-top: 24px;
+      padding: 24px 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .solution-card__details-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .solution-card__details-block + .solution-card__details-block {
+      margin-top: 20px;
+    }
+
+    .solution-card__details-subtitle {
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .solution-card__details-text {
+      margin: 12px 0 8px;
+    }
+
+    .solution-card__details-list {
+      margin: 0 0 0 18px;
+      padding: 0;
+      list-style: disc;
+      line-height: 1.8;
+    }
+
+    .solution-card__details-list li {
+      margin-bottom: 8px;
+    }
+
+    .solution-detail-panel {
+      grid-column: 1 / -1;
+      width: 100%;
+      margin-top: 32px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -18px rgba(0, 0, 0, 0.35);
+      padding: 32px 28px;
+      color: rgba(255, 255, 255, 0.95);
+      box-sizing: border-box;
+    }
+
+    .solution-detail-panel__inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .solution-detail-panel__title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: white;
+    }
+
+    .solution-detail-panel__section + .solution-detail-panel__section {
+      margin-top: 28px;
+    }
+
+    .solution-detail-panel__subtitle {
+      font-weight: 600;
+      margin: 16px 0 10px;
+      color: white;
+    }
+
+    .solution-detail-panel__text {
+      margin: 10px 0 12px;
+    }
+
+    .solution-detail-panel__list {
+      margin: 0 0 0 20px;
+      padding: 0;
+      list-style: disc;
+      line-height: 1.8;
+    }
+
+    .solution-detail-panel__list li {
+      margin-bottom: 10px;
+    }
+
     .hero__image-wrap {
       border-radius: 20px;
       overflow: hidden;
@@ -651,6 +776,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 28px;
+      align-items: start;
     }
 
     .solution-card {
@@ -2427,8 +2553,13 @@
             <em>Through Innovation</em>
           </h1>
           <p class="hero__text">
-            Hezky Health is a global leader in IVF laboratory solutions, andrology diagnostics, and medical equipment supply. We build the foundations of life by combining expertise, technology, and compassion.
+            Hezky Health is a global leader in IVF laboratory solutions, andrology diagnostics, and medical equipment supply.
           </p>
+          <div class="hero__text hero__text--extended" id="heroTextMore" hidden>
+            <p>We specialize in the diagnosis, treatment, and comprehensive management of male infertility. Backed by expertise in andrology, male fertility research, and advanced diagnostic testing, we provide evidence-based evaluations and personalized care to help men understand and improve their reproductive health.</p>
+            <p>Our commitment is to deliver accurate diagnostics, innovative solutions, and compassionate support throughout every stage of the fertility journey. We build the foundations of life by combining expertise, technology, and compassion.</p>
+          </div>
+          <button type="button" class="hero__read-more" aria-expanded="false" aria-controls="heroTextMore">READ MORE</button>
           <div class="hero__ctas">
             <a href="#solutions" class="btn btn--navy btn--lg">EXPLORE OUR SERVICES →</a>
             <a href="#about" class="btn btn--outline btn--lg">ABOUT HEZKY HEALTH</a>
@@ -2520,7 +2651,7 @@
             </div>
             <h3 class="solution-card__title">IVF Laboratory Design</h3>
             <p class="solution-card__desc">Complete laboratory planning, turnkey setup, equipment installation &amp; validation.</p>
-            <a href="#" class="solution-card__link" aria-label="Learn more about IVF Laboratory Design">LEARN MORE →</a>
+            <button type="button" class="solution-card__link solution-card__toggle" aria-expanded="false" aria-controls="labDesignDetails">LEARN MORE →</button>
           </article>
 
           <article class="solution-card fade-up" id="solution-andrology" style="--delay:0.2s">
@@ -2529,7 +2660,7 @@
             </div>
             <h3 class="solution-card__title">Andrology Solutions</h3>
             <p class="solution-card__desc">Advanced male fertility testing including DNA fragmentation, ROS testing, and comprehensive semen analysis.</p>
-            <a href="#" class="solution-card__link" aria-label="Learn more about Andrology Solutions">LEARN MORE →</a>
+            <button type="button" class="solution-card__link solution-card__toggle" aria-expanded="false" aria-controls="andrologyDetails">LEARN MORE →</button>
           </article>
 
           <article class="solution-card fade-up" id="solution-equipment" style="--delay:0.3s">
@@ -2538,7 +2669,7 @@
             </div>
             <h3 class="solution-card__title">Medical Equipment Supply</h3>
             <p class="solution-card__desc">Premium IVF consumables, reagents, and state-of-the-art laboratory equipment from trusted global brands.</p>
-            <a href="#" class="solution-card__link" aria-label="Learn more about Medical Equipment Supply">LEARN MORE →</a>
+            <button type="button" class="solution-card__link solution-card__toggle" aria-expanded="false" aria-controls="equipmentDetails">LEARN MORE →</button>
           </article>
 
           <article class="solution-card fade-up" id="solution-consultancy" style="--delay:0.4s">
@@ -2547,9 +2678,105 @@
             </div>
             <h3 class="solution-card__title">Laboratory Consultancy</h3>
             <p class="solution-card__desc">Workflow optimization, quality management, training, and continuous support for laboratory excellence.</p>
-            <a href="#" class="solution-card__link" aria-label="Learn more about Laboratory Consultancy">LEARN MORE →</a>
+            <button type="button" class="solution-card__link solution-card__toggle" aria-expanded="false" aria-controls="consultancyDetails">LEARN MORE →</button>
           </article>
 
+        </div>
+        <div class="solution-detail-panel" id="labDesignDetails" hidden>
+          <div class="solution-detail-panel__inner">
+            <p class="solution-detail-panel__title">Building World-Class IVF Laboratories</p>
+            <p>At Hezky Health, we specialize in the complete design, planning, installation, and commissioning of IVF laboratories that meet international standards for quality, safety, and performance.</p>
+            <p>Whether you are establishing a new fertility center or upgrading an existing laboratory, our team delivers a fully customized solution tailored to your clinical goals, workflow, and budget.</p>
+            <div class="solution-detail-panel__section">
+              <h4>Our Services</h4>
+              <p class="solution-detail-panel__subtitle">Laboratory Planning &amp; Design</p>
+              <p>We create efficient laboratory layouts that maximize workflow, minimize contamination risks, and ensure compliance with global IVF laboratory standards.</p>
+              <p class="solution-detail-panel__text">Our planning includes:</p>
+              <ul class="solution-detail-panel__list">
+                <li>Space optimization</li>
+                <li>Workflow analysis</li>
+                <li>Airflow planning</li>
+                <li>Cleanroom recommendations</li>
+                <li>Utility planning</li>
+                <li>Future expansion considerations</li>
+              </ul>
+            </div>
+            <div class="solution-detail-panel__section">
+              <h4>Turnkey IVF Laboratory Setup</h4>
+              <p>From concept to completion, we provide an end-to-end solution including:</p>
+              <ul class="solution-detail-panel__list">
+                <li>Laboratory design</li>
+                <li>Equipment selection</li>
+                <li>Procurement</li>
+                <li>Installation</li>
+                <li>Validation &amp; commissioning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-detail-panel" id="andrologyDetails" hidden>
+          <div class="solution-detail-panel__inner">
+            <p class="solution-detail-panel__title">Andrology Solutions</p>
+            <div class="solution-detail-panel__section">
+              <p class="solution-detail-panel__text">Comprehensive andrology solutions featuring advanced male fertility diagnostics, DNA fragmentation analysis, oxidative stress (ROS) testing, semen analysis, laboratory consultancy, and specialist technical support.</p>
+              <p class="solution-detail-panel__text"><em>Precision Diagnostics. Better Decisions. Improved Fertility Outcomes.</em></p>
+              <p class="solution-detail-panel__text">Male factor infertility contributes to nearly half of all infertility cases, making accurate diagnosis essential for successful treatment. At Hezky Health, we deliver advanced andrology solutions that combine cutting-edge diagnostics, laboratory excellence, and clinical expertise to support fertility specialists in providing the highest standard of patient care.</p>
+              <p class="solution-detail-panel__text">Whether you’re a fertility clinic, hospital, diagnostic laboratory, or research institution, we offer comprehensive services tailored to enhance diagnostic accuracy and reproductive outcomes.</p>
+            </div>
+            <div class="solution-detail-panel__section">
+              <h4>Advanced Male Fertility Diagnostics</h4>
+              <p class="solution-detail-panel__text">Our laboratory provides a full spectrum of specialised andrology investigations that go beyond conventional semen analysis to deliver deeper clinical insights.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-detail-panel" id="equipmentDetails" hidden>
+          <div class="solution-detail-panel__inner">
+            <p class="solution-detail-panel__title">Medical Equipment Supply — Premium Laboratory Technologies for Reproductive Medicine</p>
+            <div class="solution-detail-panel__section">
+              <p class="solution-detail-panel__text"><strong>Premium IVF, andrology, and diagnostic laboratory equipment, consumables, reagents, and cryogenic solutions from trusted global manufacturers—supported by expert consultation, installation, validation, and technical service.</strong></p>
+              <p class="solution-detail-panel__text">At Hezky Health, we supply world-class medical and laboratory equipment that empowers fertility centres, hospitals, diagnostic laboratories, universities, and research institutions to deliver exceptional patient care and scientific excellence.</p>
+              <p class="solution-detail-panel__text">We partner with globally recognized manufacturers to provide carefully selected technologies that meet the highest standards of precision, reliability, and performance.</p>
+              <p class="solution-detail-panel__text">Whether establishing a new laboratory or upgrading an existing facility, we deliver complete equipment solutions backed by expert consultation, installation, validation, and ongoing technical support.</p>
+            </div>
+            <div class="solution-detail-panel__section">
+              <h4>Our Product Portfolio</h4>
+              <p class="solution-detail-panel__text">We provide a comprehensive range of premium laboratory equipment, including:</p>
+              <ul class="solution-detail-panel__list">
+                <li>IVF incubators and culture systems</li>
+                <li>Andrology analyzers and sperm assessment tools</li>
+                <li>Cryogenic storage tanks and monitoring solutions</li>
+                <li>Microscopes and imaging systems</li>
+                <li>Consumables, reagents, and diagnostic kits</li>
+                <li>Laboratory furniture and environmental control equipment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="solution-detail-panel" id="consultancyDetails" hidden>
+          <div class="solution-detail-panel__inner">
+            <p class="solution-detail-panel__title">Laboratory Consultancy — Transforming Laboratories into Centres of Excellence</p>
+            <div class="solution-detail-panel__section">
+              <p class="solution-detail-panel__text">We provide expert laboratory consultancy services that empower healthcare institutions to achieve operational excellence, regulatory compliance, and outstanding diagnostic performance.</p>
+              <p class="solution-detail-panel__text">Whether you’re establishing a new laboratory, expanding your services, or enhancing an existing facility, we deliver tailored solutions that improve efficiency, quality, and long-term sustainability.</p>
+            </div>
+            <div class="solution-detail-panel__section">
+              <h4>Our Consultancy Services</h4>
+              <ul class="solution-detail-panel__list">
+                <li>Laboratory Planning &amp; Design</li>
+                <li>Workflow Analysis &amp; Optimisation</li>
+                <li>Quality Management Systems (QMS)</li>
+                <li>Standard Operating Procedure (SOP) Development</li>
+                <li>Laboratory Accreditation Support</li>
+                <li>Equipment Selection &amp; Procurement</li>
+                <li>Installation, Qualification &amp; Validation</li>
+                <li>Risk Assessment &amp; Quality Assurance</li>
+                <li>Technical Audits &amp; Performance Reviews</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2569,20 +2796,20 @@
               <i class="fas fa-hospital"></i>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Completed 2024</span>
-              <h3 class="project-card__name">Hope Fertility Clinic</h3>
-              <p class="project-card__desc">Full IVF laboratory design and equipment installation for a 500-patient clinic in Abuja, Nigeria.</p>
+              <span class="project-card__tag">Completed 2025</span>
+              <h3 class="project-card__name">360 Degree Clinic</h3>
+              <p class="project-card__desc">Full IVF laboratory design, setup and consultancy.</p>
             </div>
           </article>
 
           <article class="project-card fade-up" style="--delay:0.2s">
             <div class="project-card__image-wrap">
-              <i class="fas fa-microscope"></i>
+              <i class="fas fa-hospital-symbol"></i>
             </div>
             <div class="project-card__body">
-              <span class="project-card__tag">Completed 2024</span>
-              <h3 class="project-card__name">Apex Andrology Center</h3>
-              <p class="project-card__desc">State-of-the-art andrology laboratory with DNA fragmentation and ROS testing capabilities.</p>
+              <span class="project-card__tag">Completed 2025</span>
+              <h3 class="project-card__name">University of Abuja Teaching Hospital IVF Center</h3>
+              <p class="project-card__desc">Full IVF laboratory design and consultancy.</p>
             </div>
           </article>
 
@@ -2616,7 +2843,7 @@
             <h3 class="training-card__title">IVF Lab Essentials Workshop</h3>
             <p class="training-card__desc">Comprehensive training on IVF laboratory operations, equipment handling, and quality control protocols.</p>
             <div class="training-card__meta">
-              <span><i class="far fa-calendar-alt"></i> Jan 15-17, 2025</span>
+              <span><i class="far fa-calendar-alt"></i> Jan 15-17, 2026</span>
               <span><i class="far fa-clock"></i> 3 Days</span>
             </div>
           </article>
@@ -2626,18 +2853,18 @@
             <h3 class="training-card__title">Andrology Masterclass</h3>
             <p class="training-card__desc">Advanced seminar on male fertility diagnostics including DNA fragmentation and ROS analysis techniques.</p>
             <div class="training-card__meta">
-              <span><i class="far fa-calendar-alt"></i> Feb 10-12, 2025</span>
-              <span><i class="far fa-clock"></i> 3 Days</span>
+              <span><i class="far fa-calendar-alt"></i> May 10-11, 2026</span>
+              <span><i class="far fa-clock"></i> 2 Days</span>
             </div>
           </article>
 
           <article class="training-card fade-up" style="--delay:0.3s">
-            <div class="training-card__icon"><i class="fas fa-laptop-medical"></i></div>
-            <h3 class="training-card__title">Embryo Culture & Imaging</h3>
-            <p class="training-card__desc">Hands-on training on time-lapse imaging, embryo culture techniques, and lab management software.</p>
+            <div class="training-card__icon"><i class="fa-solid fa-mars"></i></div>
+            <h3 class="training-card__title">Male Infertility Awareness Outreach</h3>
+            <p class="training-card__desc">Free semen and consultation services for men experiencing fertility concerns.</p>
             <div class="training-card__meta">
-              <span><i class="far fa-calendar-alt"></i> Mar 5-7, 2025</span>
-              <span><i class="far fa-clock"></i> 3 Days</span>
+              <span><i class="far fa-calendar-alt"></i> Jun 1-30, 2026</span>
+              <span><i class="far fa-clock"></i> 30 Days</span>
             </div>
           </article>
 
@@ -2670,10 +2897,10 @@
           </article>
 
           <article class="resource-card fade-up" style="--delay:0.3s">
-            <div class="resource-card__icon"><i class="fas fa-video"></i></div>
-            <h3 class="resource-card__title">Webinar Series</h3>
-            <p class="resource-card__desc">On-demand webinars covering IVF technology, lab management, and clinical best practices.</p>
-            <a href="#" class="resource-card__link">Watch Now →</a>
+            <div class="resource-card__icon"><i class="fa-solid fa-dna"></i></div>
+            <h3 class="resource-card__title">Sperm DNA Fragmentation Test Kit Guide</h3>
+            <p class="resource-card__desc">Step-by-step instructions for accurate testing, sample handling, and result interpretation.</p>
+            <a href="#" class="resource-card__link">View Guide →</a>
           </article>
 
         </div>
@@ -3477,6 +3704,43 @@
         }
       });
     }
+
+    const heroReadMore = document.querySelector('.hero__read-more');
+    const heroTextMore = document.getElementById('heroTextMore');
+    if (heroReadMore && heroTextMore) {
+      heroReadMore.addEventListener('click', () => {
+        const expanded = heroTextMore.hidden === false;
+        heroTextMore.hidden = expanded;
+        heroReadMore.textContent = expanded ? 'READ MORE' : 'SHOW LESS';
+        heroReadMore.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+
+    const solutionToggles = document.querySelectorAll('.solution-card__toggle');
+    const solutionPanels = document.querySelectorAll('.solution-detail-panel');
+
+    solutionToggles.forEach((toggle) => {
+      const panelId = toggle.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      toggle.addEventListener('click', () => {
+        const currentlyOpen = panel.hidden === false;
+
+        solutionPanels.forEach((p) => p.hidden = true);
+        solutionToggles.forEach((t) => {
+          t.textContent = 'LEARN MORE →';
+          t.setAttribute('aria-expanded', 'false');
+        });
+
+        if (currentlyOpen) return;
+
+        panel.hidden = false;
+        toggle.textContent = 'SHOW LESS →';
+        toggle.setAttribute('aria-expanded', 'true');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
 
     console.log('Hezky Health — Luxury IVF Laboratory Solutions');
   </script>
